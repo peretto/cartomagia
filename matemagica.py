@@ -1,7 +1,6 @@
 import pygame
 import random
 import sys
-from collections import namedtuple
 
 def main():
     pygame.init()
@@ -80,6 +79,7 @@ def main():
         pygame.display.flip()
 
     def mostrar_carta_escolhida(carta):
+        pygame.event.clear()  # Limpa todos os eventos pendentes
         screen.fill(WHITE)
         screen.blit(fundo, (0, 0))
         mensagem = font.render("A carta escolhida foi:", True, BLACK)
@@ -96,6 +96,7 @@ def main():
         screen.blit(texto, text_rect)
         pygame.display.flip()
         pygame.time.wait(5000)
+        pygame.event.clear()  # Garante que nenhum clique fique acumulado ao voltar
 
     cartas = embaralhar_cartas()
     rodada = 0
